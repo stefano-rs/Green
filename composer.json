@@ -1,0 +1,25 @@
+{
+    "name": "green/green",
+    "type": "library",
+    "description": "Green Framework",
+    "keywords": ["microframework"],
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Stefano Ramos da Silva",
+            "homepage": "https://github.com/tete-srs/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+    	"classmap": [
+    		"app/Controller",
+    		"app/Model"
+    	],
+        "psr-0": {
+        	"Green": "./src"
+		}
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Green | Listando Produto</title>
+<link href="/green/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/green/public/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Green</a>
+    </div>
+  </div>
+</header>
+<div class="container">
+
+    <h2 class="sub-header">Listagem de usuários</h2>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Empresa</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            if ($data->num_rows > 0) {
+                while($row = $data->fetch_assoc()) {
+            ?>
+                <tr>
+                    <td><?php echo $row["id"]; ?></td>
+                    <td><?php echo $row["name"]; ?></td>
+                    <td><?php echo $row["business"]; ?></td>
+                    <td><?php echo date("d/m/Y", strtotime($row["date_create"])); ?></td>
+                    <td>
+                        <a href="/green/user/update/<?php echo $row["id"]; ?>" class="btn btn-info">Editar</a>
+                        <a href="/green/user/delete/<?php echo $row["id"]; ?>" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            <?php
+                }
+            } else {
+                echo "Nehum usuário cadastrado";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <a href="/green/user/create" class="btn btn-info">Novo usuário</a>
+</div>
+</div>
+</body>
+</html>
